@@ -15,19 +15,20 @@ public class theFirstTest {
 		
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability("platformName", "Android");
-		desiredCapabilities.setCapability("platformVersion", "9.0");
+//		desiredCapabilities.setCapability("platformVersion", "9.0");
+		desiredCapabilities.setCapability("udid", "FA7A31A08884");
 		desiredCapabilities.setCapability("deviceName", "Pixel2Simulator");
 		desiredCapabilities.setCapability("automationName", "UiAutomator2");
 		
 		//	If application is already installed and just needs launching without reinstalling:		
-		desiredCapabilities.setCapability("appPackage", "io.appium.android.apis");
-		desiredCapabilities.setCapability("appActivity", ".ApiDemos");
+//		desiredCapabilities.setCapability("appPackage", "io.appium.android.apis");
+//		desiredCapabilities.setCapability("appActivity", ".ApiDemos");
 		
 		// 	### setting avd to launch automatically
-		desiredCapabilities.setCapability("avd", "Pixel_2_And9");
+//		desiredCapabilities.setCapability("avd", "Pixel_2_And9");
 		
-		// commented app key since the app does not need to be reinstalled
-//		desiredCapabilities.setCapability("app", "/Users/ionel/automation/dummy/ApiDemos-debug.apk");
+		// un/commented app key if the app need to be reinstalled or not
+		desiredCapabilities.setCapability("app", "/Users/ionel/automation/dummy/ApiDemos-debug.apk");
 
 		//	### added throw exception in case of errors
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
