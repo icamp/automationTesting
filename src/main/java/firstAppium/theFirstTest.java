@@ -2,6 +2,7 @@ package firstAppium;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -44,18 +45,27 @@ public class theFirstTest {
 		//	### Using AppiumDriver so that the framework supports both Android and iOS
 		AppiumDriver driver = new AndroidDriver(url, desiredCapabilities);
 		String sessionId = driver.getSessionId().toString();
-
-		MobileElement seven = (MobileElement) driver.findElementById("digit_7");
-		MobileElement four = (MobileElement) driver.findElementById("digit_4");
-		MobileElement add = (MobileElement) driver.findElementById("ap_add");
 		
-//		MobileElement equal = (MobileElement) driver.findElementById("eq");
+		MobileElement seven = (MobileElement) driver.findElementById("digit_7");
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		MobileElement four = (MobileElement) driver.findElementById("digit_4");
+		MobileElement add = (MobileElement) driver.findElementById("op_add");
+		
+		MobileElement equal = (MobileElement) driver.findElementById("eq");
 		// Ex of using WebElemet class to find the equals sign
-		WebElement equal = driver.findElementById("eq");
+//		WebElement equal = driver.findElementById("eq");
 		
 //		MobileElement result = (MobileElement) driver.findElementById("result_final");
-		// Ex of using By class to find the result text field
+//		Ex of using By class to find the result text field
 		By result = By.id("result_final");
+		
+		Thread.sleep(2000);
+		seven.click();
+		add.click();
+		four.click();
+		equal.click();
+		String actualResult = driver.findElement(result).getText();
+		System.out.println("actual value is " + actualResult);
 	}
 
 }
