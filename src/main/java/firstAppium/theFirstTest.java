@@ -3,9 +3,12 @@ package firstAppium;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
 public class theFirstTest {
@@ -17,18 +20,21 @@ public class theFirstTest {
 		desiredCapabilities.setCapability("platformName", "Android");
 //		desiredCapabilities.setCapability("platformVersion", "9.0");
 		desiredCapabilities.setCapability("udid", "FA7A31A08884");
-		desiredCapabilities.setCapability("deviceName", "Pixel2Simulator");
+		desiredCapabilities.setCapability("deviceName", "Pixel2");
 		desiredCapabilities.setCapability("automationName", "UiAutomator2");
 		
 		//	If application is already installed and just needs launching without reinstalling:		
 //		desiredCapabilities.setCapability("appPackage", "io.appium.android.apis");
 //		desiredCapabilities.setCapability("appActivity", ".ApiDemos");
+
+		desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
+		desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
 		
 		// 	### setting avd to launch automatically
 //		desiredCapabilities.setCapability("avd", "Pixel_2_And9");
 		
 		// un/commented app key if the app need to be reinstalled or not
-		desiredCapabilities.setCapability("app", "/Users/ionel/automation/dummy/ApiDemos-debug.apk");
+//		desiredCapabilities.setCapability("app", "/Users/ionel/automation/dummy/ApiDemos-debug.apk");
 
 		//	### added throw exception in case of errors
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
@@ -39,7 +45,45 @@ public class theFirstTest {
 		AppiumDriver driver = new AndroidDriver(url, desiredCapabilities);
 		String sessionId = driver.getSessionId().toString();
 
-
+		MobileElement seven = (MobileElement) driver.findElementById("digit_7");
+		MobileElement four = (MobileElement) driver.findElementById("digit_4");
+		MobileElement add = (MobileElement) driver.findElementById("ap_add");
+		
+//		MobileElement equal = (MobileElement) driver.findElementById("eq");
+		// Ex of using WebElemet class to find the equals sign
+		WebElement equal = driver.findElementById("eq");
+		
+//		MobileElement result = (MobileElement) driver.findElementById("result_final");
+		// Ex of using By class to find the result text field
+		By result = By.id("result_final");
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
